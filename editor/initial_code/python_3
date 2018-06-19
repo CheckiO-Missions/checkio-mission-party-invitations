@@ -1,0 +1,28 @@
+class Friend:
+    pass
+
+class Party:
+    pass
+
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+
+    party = Party()
+    nick = Friend('Nick')
+    john = Friend('John')
+    lucy = Friend('Lucy')
+
+    party.add_friend(nick)
+    party.add_friend(john)
+    party.add_friend(lucy)
+    party.del_friend(nick)
+    assert party.send_invites("Friday, Midnight Pub, 9:00 PM") == """John has been invited to the party: Friday, Midnight Pub, 9:00 PM
+Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM"""
+
+    kyle = Friend("Kyle")
+    party.add_friend(kyle)
+    assert party.send_invites("Sunday, Karl's home, 11:30 AM") == """John has been invited to the party: Sunday, Karl's home, 11:30 AM
+Lucy has been invited to the party: Sunday, Karl's home, 11:30 AM
+Kyle has been invited to the party: Sunday, Karl's home, 11:30 AM"""
+    print("Coding complete? Let's try tests!")

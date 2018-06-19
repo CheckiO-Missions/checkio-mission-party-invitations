@@ -1,0 +1,50 @@
+<p>
+Your friends and you are meeting each week to spend time together. Usually you sit in the bar at Friday's night or go outside the city to the nature at Saturday or play board games at Sunday. You want to simplify the process of gathering people and that's why you have decided to write a program which could automate this process.<br>
+You should create class Friend and each friend will be an instance of this class.<br>
+Sometimes the circle of friends is changes - new friends appear, the old are disappear (for example - move to the other town). For creating the right connections you should create the Party class with the next methods:<br>
+<br>
+<strong>add_friend</strong>(Friend(name)) - add friend 'name' to the list of the 'observers' (people, which will get the invitations, when the new party is scheduled).<br>
+<strong>del_friend</strong>(friend) - remove 'friend' from the 'observers' list.<br>
+<strong>send_invites()</strong> - returns the multiline string, with the list of all friends and the message they have got:<br>
+<pre class="brush: python">
+'''John has been invited to the party: Friday, Midnight Pub, 9:00 PM
+Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM'''
+</pre>
+You should return an empty string ("") if list of the friends (observers) is empty.<br>
+In this mission you coulduse the <a href='https://en.wikipedia.org/wiki/Observer_pattern'>Observer</a> design pattern.
+</p>
+
+<p>
+<strong>Examples</strong>:
+<pre class="brush: python">
+party = Party()
+nick = Friend('Nick')
+john = Friend('John')
+lucy = Friend('Lucy')
+party.add_friend(nick)
+party.add_friend(john)
+party.add_friend(lucy)
+party.del_friend(nick)
+party.send_invites("Friday, Midnight Pub, 9:00 PM") == '''John has been invited to the party: Friday, Midnight Pub, 9:00 PM
+Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM'''
+</pre>
+</p>
+<br>
+
+<p>
+    <strong>Input: </strong>methods of the Party class and friends.
+</p>
+
+<p>
+    <strong>Output: </strong>multiline string with the list of all who have got the invitations and the text of the invitation.
+</p>
+
+<p class="for_info_only">
+    <strong>How it is used: </strong>
+    For the automate the mailing system of the notifications for the all observers.
+</p>
+
+<p>
+    <strong>Precondition:</strong>
+    All friends names will be different.
+</p>
