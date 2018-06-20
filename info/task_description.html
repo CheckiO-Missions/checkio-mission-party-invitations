@@ -1,35 +1,36 @@
 <p>
 Your friends and you are meeting each week to spend time together. Usually you sit in the bar at Friday's night or go outside the city to the nature at Saturday or play board games at Sunday. You want to simplify the process of gathering people and that's why you have decided to write a program which could automate this process.<br>
-You should create class Friend and each friend will be an instance of this class.<br>
+You should create class Party(place) which will send the invites to the friends.
+Also you should create class Friend and each friend will be an instance of this class.<br>
 Sometimes the circle of friends is changes - new friends appear, the old are disappear (for example - move to the other town). For creating the right connections you should create the Party class with the next methods:<br>
 <br>
 <strong>add_friend</strong>(Friend(name)) - add friend 'name' to the list of the 'observers' (people, which will get the invitations, when the new party is scheduled).<br>
 <strong>del_friend</strong>(friend) - remove 'friend' from the 'observers' list.<br>
-<strong>send_invites()</strong> - send the invites to the each person in the list of 'observers'.<br>
-Class Friend should have the method <strong>show_invite()</strong> which returns string with the last invite that the person has received. If the person didn't get any invite, this method should return - "No party..."<br>
+<strong>send_invites()</strong> - send the invites with the right day and time to the each person in the list of 'observers'.<br>
+Class Friend should have the method <strong>show_invite()</strong> which returns string with the last invite that the person has received with the right place? day and time. The right place - is the 'place' which is given to the Party instance in the moment of creation. If the person didn't get any invite, this method should return - "No party..."<br>
 In this mission you coulduse the <a href='https://en.wikipedia.org/wiki/Observer_pattern'>Observer</a> design pattern.
 </p>
 
 <p>
 <strong>Examples</strong>:
 <pre class="brush: python">
-party = Party()
-nick = Friend('Nick')
-john = Friend('John')
-lucy = Friend('Lucy')
-chuck = Friend('Chuck')
+party = Party("Midnight Pub")
+nick = Friend("Nick")
+john = Friend("John")
+lucy = Friend("Lucy")
+chuck = Friend("Chuck")
 
 party.add_friend(nick)
 party.add_friend(john)
 party.add_friend(lucy)
-party.send_invites("Friday, Midnight Pub, 9:00 PM")
+party.send_invites("Friday, 9:00 PM")
 party.del_friend(nick)
-party.send_invites("Saturday, Central Park, 10:00 AM")
+party.send_invites("Saturday, 10:00 AM")
 party.add_friend(chuck)
 
-john.show_invite() == "Saturday, Central Park, 10:00 AM"
-lucy.show_invite() == "Saturday, Central Park, 10:00 AM"
-nick.show_invite() == "Friday, Midnight Pub, 9:00 PM"
+john.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
+lucy.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
+nick.show_invite() == "Midnight Pub: Friday, 9:00 PM"
 chuck.show_invite() == "No party..."
 </pre>
 </p>
