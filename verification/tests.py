@@ -35,10 +35,12 @@ lucy = Friend('Lucy')
 party.add_friend(nick)
 party.add_friend(john)
 party.add_friend(lucy)
-party.del_friend(nick)''',
-                     test="party.send_invites('Friday, Midnight Pub, 9:00 PM')",
-                     answer='''John has been invited to the party: Friday, Midnight Pub, 9:00 PM
-Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM''')
+party.send_invites('Friday, Midnight Pub, 9:00 PM')
+party.del_friend(nick)
+party.send_invites("Saturday, Central Park, 10:00 AM")
+''',
+                     test="nick.show_invite()",
+                     answer='Friday, Midnight Pub, 9:00 PM')
     ],
     "2. Second": [
         prepare_test(middle_code='''party = Party()
@@ -47,11 +49,10 @@ bob = Friend('Bob Monteu')
 mary = Friend('Mary Forest')
 party.add_friend(jack)
 party.add_friend(bob)
+party.send_invites('Sunday, Karl`s home, 11:30 AM')
 party.add_friend(mary)''',
-                     test="party.send_invites('Sunday, Karl`s home, 11:30 AM')",
-                     answer='''Jack McConnel has been invited to the party: Sunday, Karl`s home, 11:30 AM
-Bob Monteu has been invited to the party: Sunday, Karl`s home, 11:30 AM
-Mary Forest has been invited to the party: Sunday, Karl`s home, 11:30 AM''')
+                     test="mary.show_invite()",
+                     answer="No party...")
     ],
     "3. Third": [
         prepare_test(middle_code='''party = Party()
@@ -59,10 +60,10 @@ karl = Friend('Karl')
 rachel = Friend('Rachel')
 wanda = Friend('Wanda')
 party.add_friend(karl)
-party.add_friend(wanda)''',
-                     test="party.send_invites('Saturday, South entrance of the Yosemite, 7:00 AM')",
-                     answer='''Karl has been invited to the party: Saturday, South entrance of the Yosemite, 7:00 AM
-Wanda has been invited to the party: Saturday, South entrance of the Yosemite, 7:00 AM''')
+party.add_friend(wanda)
+party.send_invites('Saturday, South entrance of the Yosemite, 7:00 AM')''',
+                     test="rachel.show_invite()",
+                     answer="No party...")
     ],
     "4. Fourth": [
         prepare_test(middle_code='''party = Party()
@@ -71,11 +72,10 @@ amanda = Friend('Amanda')
 grace = Friend('Grace')
 party.add_friend(patrick)
 party.add_friend(amanda)
-party.add_friend(grace)''',
-                     test="party.send_invites('Friday, Miranda`s home, 19:00')",
-                     answer='''Patrick has been invited to the party: Friday, Miranda`s home, 19:00
-Amanda has been invited to the party: Friday, Miranda`s home, 19:00
-Grace has been invited to the party: Friday, Miranda`s home, 19:00''')
+party.add_friend(grace)
+party.send_invites('Friday, Miranda`s home, 19:00')''',
+                     test="grace.show_invite()",
+                     answer="Friday, Miranda`s home, 19:00")
     ],
     "5. Fifth": [
         prepare_test(middle_code='''party = Party()
@@ -87,9 +87,10 @@ party.add_friend(john)
 party.add_friend(lucy)
 party.del_friend(nick)
 party.del_friend(john)
-party.del_friend(lucy)''',
-                     test="party.send_invites('Sunday, Central Park, 14:20')",
-                     answer="")
+party.del_friend(lucy)
+party.send_invites('Sunday, Central Park, 14:20')''',
+                     test="lucy.show_invite()",
+                     answer="No party...")
     ]
 
 }

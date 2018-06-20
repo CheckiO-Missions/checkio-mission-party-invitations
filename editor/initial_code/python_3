@@ -12,17 +12,18 @@ if __name__ == '__main__':
     nick = Friend('Nick')
     john = Friend('John')
     lucy = Friend('Lucy')
+    chuck = Friend('Chuck')
 
     party.add_friend(nick)
     party.add_friend(john)
     party.add_friend(lucy)
+    party.send_invites("Friday, Midnight Pub, 9:00 PM")
     party.del_friend(nick)
-    assert party.send_invites("Friday, Midnight Pub, 9:00 PM") == """John has been invited to the party: Friday, Midnight Pub, 9:00 PM
-Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM"""
+    party.send_invites("Saturday, Central Park, 10:00 AM")
+    party.add_friend(chuck)
 
-    kyle = Friend("Kyle")
-    party.add_friend(kyle)
-    assert party.send_invites("Sunday, Karl's home, 11:30 AM") == """John has been invited to the party: Sunday, Karl's home, 11:30 AM
-Lucy has been invited to the party: Sunday, Karl's home, 11:30 AM
-Kyle has been invited to the party: Sunday, Karl's home, 11:30 AM"""
+    assert john.show_invite() == "Saturday, Central Park, 10:00 AM"
+    assert lucy.show_invite() == "Saturday, Central Park, 10:00 AM"
+    assert nick.show_invite() == "Friday, Midnight Pub, 9:00 PM"
+    assert chuck.show_invite() == "No party..."
     print("Coding complete? Let's try tests!")

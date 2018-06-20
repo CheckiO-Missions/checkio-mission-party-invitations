@@ -5,12 +5,8 @@
 <br>
 <strong>add_friend</strong>(Friend(name)) - добавляет друга 'name' в список 'наблюдателей' (людей, которые оповещаются каждый раз, когда назначается новая встреча).<br>
 <strong>del_friend</strong>(friend) - удаляет друга friend из списка 'наблюдателей'.<br>
-<strong>send_invites()</strong> - возвращает многострочную строку, где перечислены все друзья из списка и текст приглашения в формате:<br>
-<pre class="brush: python">
-'''John has been invited to the party: Friday, Midnight Pub, 9:00 PM
-Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM'''
-</pre>
-Вам необходимо вернуть пустую строку ("") если список друзей (наблюдателей) пуст.<br>
+<strong>send_invites()</strong> - рассылает приглашения всем друзьям из списка 'наблюдателей'.<br>
+Класс Friend должен иметь метод <strong>show_invite()</strong>, который возвращает текст последнего приглашения, полученного человеком. Если человек не получил приглашения, то этот метод должен вернуть - "No party..."<br>
 В этой миссии вам может помочь такой шаблон проектирования, как <a href='https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)'>Observer</a>.
 </p>
 
@@ -21,12 +17,20 @@ party = Party()
 nick = Friend('Nick')
 john = Friend('John')
 lucy = Friend('Lucy')
+chuck = Friend('Chuck')
+
 party.add_friend(nick)
 party.add_friend(john)
 party.add_friend(lucy)
+party.send_invites("Friday, Midnight Pub, 9:00 PM")
 party.del_friend(nick)
-party.send_invites("Friday, Midnight Pub, 9:00 PM") == '''John has been invited to the party: Friday, Midnight Pub, 9:00 PM
-Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM'''
+party.send_invites("Saturday, Central Park, 10:00 AM")
+party.add_friend(chuck)
+
+john.show_invite() == "Saturday, Central Park, 10:00 AM"
+lucy.show_invite() == "Saturday, Central Park, 10:00 AM"
+nick.show_invite() == "Friday, Midnight Pub, 9:00 PM"
+chuck.show_invite() == "No party..."
 </pre>
 </p>
 <br>
@@ -36,7 +40,7 @@ Lucy has been invited to the party: Friday, Midnight Pub, 9:00 PM'''
 </p>
 
 <p>
-    <strong>Выходные данные: </strong>многострочная строка, со списком всех, кому были отправлены приглашения и текстом самого приглашения.
+    <strong>Выходные данные: </strong>текст приглашения, полученного человеком.
 </p>
 
 <p class="for_info_only">
