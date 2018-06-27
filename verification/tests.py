@@ -91,6 +91,36 @@ party.del_friend(lucy)
 party.send_invites('Sunday, 14:20')''',
                      test="lucy.show_invite()",
                      answer="No party...")
+    ],
+    "6. Sixth": [
+        prepare_test(middle_code='''party_1 = Party("Ashwood")
+party_2 = Party("Pink Cave")
+patrick = Friend('Patrick')
+amanda = Friend('Amanda')
+grace = Friend('Grace')
+party_1.add_friend(patrick)
+party_2.add_friend(amanda)
+party_2.add_friend(grace)
+party_1.send_invites('Friday, 19:00')
+party_2.send_invites('Sunday, 11:00')''',
+                     test="grace.show_invite()",
+                     answer="Pink Cave: Sunday, 11:00")
+    ],
+    "7. Seventh": [
+        prepare_test(middle_code='''party_1 = Party("Celentano")
+party_2 = Party("Itaka")
+party_3 = Party("Disneyland")
+john = Friend('John')
+rose = Friend('Rose')
+gabe = Friend('Gabe')
+party_1.add_friend(john)
+party_2.add_friend(rose)
+party_3.add_friend(gabe)
+party_1.send_invites('Friday, 18:45')
+party_2.send_invites('Saturday, 12:30')
+party_3.send_invites('Sunday, 10:00')''',
+                     test="rose.show_invite()",
+                     answer="Itaka: Saturday, 12:30")
     ]
 
 }
