@@ -28,10 +28,10 @@ party.del_friend(nick)
 party.send_invites("Saturday, 10:00 AM")
 party.add_friend(chuck)
 
-john.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
-lucy.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
-nick.show_invite() == "Midnight Pub: Friday, 9:00 PM"
-chuck.show_invite() == "No party..."
+assert john.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
+assert lucy.show_invite() == "Midnight Pub: Saturday, 10:00 AM"
+assert nick.show_invite() == "Midnight Pub: Friday, 9:00 PM"
+assert chuck.show_invite() == "No party..."
 </pre>
 </p>
 <br>
